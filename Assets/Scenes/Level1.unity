@@ -2747,7 +2747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7558f234aa7ca874a96c5f94592ffb51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 7
+  playerSpeed: 11
   boundary: 1.97
 --- !u!1001 &922776788
 PrefabInstance:
