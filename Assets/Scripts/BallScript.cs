@@ -24,6 +24,11 @@ public class BallScript : MonoBehaviour
     private float koef;
     private int idc;
 
+    public PlayerScript Racket;
+    public bool floose;
+    public bool fwin;
+
+  
     // Start is called before the first frame update
     void Start()
     {
@@ -55,100 +60,112 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // проверка нажатия на пробел
-        if (Input.GetMouseButton(0) == true)
+        
+        if ((floose == false)&&(fwin == false))
         {
-            if (!ballIsActive)
+            // проверка нажатия на пробел
+            if (Input.GetMouseButton(0) == true)
             {
-                ballStopped = false;
+                if (!ballIsActive)
+                {
+                    ballStopped = false;
 
-                // сброс всех сил
-                ballRigidBody.isKinematic = false;
+                    // сброс всех сил
+                    ballRigidBody.isKinematic = false;
 
-                // применим силу
-                RandomAngle();
-                ballInitialForce = new Vector2(speed_X, speed_Y);
-                ballRigidBody.AddForce(ballInitialForce);
+                    // применим силу
+                    RandomAngle();
+                    ballInitialForce = new Vector2(speed_X, speed_Y);
+                    ballRigidBody.AddForce(ballInitialForce);
 
-                // зададим активное состояние
-                ballIsActive = !ballIsActive;
+                    // зададим активное состояние
+                    ballIsActive = !ballIsActive;
 
+                }
             }
-        }
 
-        if (!ballIsActive && playerObject != null)
-        {
-            // задаем новую позицию шарика
-            ballPosition.x = playerObject.transform.position.x;
-
-            // устанавливаем позицию шара
-            transform.position = ballPosition;
-        }
-
-        // проверка падения шара
-        if (ballIsActive && transform.position.y < -4.0)
-        {
-            //Замедление шара
-            drag_ball = 7.0f;
-            ballRigidBody.drag = drag_ball;
-
-            speed_X = Mathf.Abs(ballRigidBody.velocity.x);
-            speed_Y = Mathf.Abs(ballRigidBody.velocity.y);
-
-            if((speed_X == 0)&&(speed_Y == 0)) {
-                ballStopped = true;
-            }
-            else
+            if (!ballIsActive && playerObject != null)
             {
-                ballStopped = false;
+                // задаем новую позицию шарика
+                ballPosition.x = playerObject.transform.position.x;
+
+                // устанавливаем позицию шара
+                transform.position = ballPosition;
             }
-        }
 
-
-        if (ballStopped == true)
-        {
-            drag_ball = 0.0f;
-            ballRigidBody.drag = drag_ball;
-            ballIsActive = !ballIsActive;
-            ballPosition.x = playerObject.transform.position.x;
-            ballPosition.y = playerObject.transform.position.y + 0.36f;
-            transform.position = ballPosition;
-            ballRigidBody.isKinematic = true;
-
-            //добавили вызов метода
-            playerObject.SendMessage("TakeLife");
-            ballStopped = false;
-        }
-
-        idc++;
-        if(idc == 30) {
-            idc = 0;
-        if ((ballIsActive == true)&&(drag_ball == 0))
-        {
-            // Ограничение скорости по осям Х и Y
-            speed_X = Mathf.Abs(ballRigidBody.velocity.x);
-            speed_Y = Mathf.Abs(ballRigidBody.velocity.y);
-            koef = Mathf.Sqrt(speed_X * speed_X + speed_Y * speed_Y);
-            if (koef != 0)
+            // проверка падения шара
+            if (ballIsActive && transform.position.y < -4.0)
             {
-                koef = Z / koef;
-            }
+                //Замедление шара
+                drag_ball = 7.0f;
+                ballRigidBody.drag = drag_ball;
+
+                speed_X = Mathf.Abs(ballRigidBody.velocity.x);
+                speed_Y = Mathf.Abs(ballRigidBody.velocity.y);
+
                 if ((speed_X == 0) && (speed_Y == 0))
                 {
-                    RandomAngle();
+                    ballStopped = true;
                 }
                 else
                 {
-                    speed_X = speed_X * koef;
-                    speed_Y = speed_Y * koef;
+                    ballStopped = false;
                 }
+            }
 
-            ballRigidBody.velocity = new Vector2(Mathf.Sign(ballRigidBody.velocity.x) * speed_X / 70f, (Mathf.Sign(ballRigidBody.velocity.y)) * speed_Y / 70f);
+
+            if (ballStopped == true)
+            {
+                //добавили вызов метода
+                playerObject.SendMessage("TakeLife");
+
+                ballStopped = false;
+
+                floose = Racket.loose;
+                fwin = Racket.win;
+                if ((floose == false) && (fwin == false))
+                {
+                    drag_ball = 0.0f;
+                    ballRigidBody.drag = drag_ball;
+                    ballIsActive = !ballIsActive;
+                    ballPosition.x = playerObject.transform.position.x;
+                    ballPosition.y = playerObject.transform.position.y + 0.36f;
+                    transform.position = ballPosition;
+                    ballRigidBody.isKinematic = true;
+                }
+            }
+
+            idc++;
+            if (idc == 30)
+            {
+                idc = 0;
+                if ((ballIsActive == true) && (drag_ball == 0))
+                {
+                    // Ограничение скорости по осям Х и Y
+                    speed_X = Mathf.Abs(ballRigidBody.velocity.x);
+                    speed_Y = Mathf.Abs(ballRigidBody.velocity.y);
+                    koef = Mathf.Sqrt(speed_X * speed_X + speed_Y * speed_Y);
+                    if (koef != 0)
+                    {
+                        koef = Z / koef;
+                    }
+                    if ((speed_X == 0) && (speed_Y == 0))
+                    {
+                        RandomAngle();
+                    }
+                    else
+                    {
+                        speed_X = speed_X * koef;
+                        speed_Y = speed_Y * koef;
+                    }
+
+                    ballRigidBody.velocity = new Vector2(Mathf.Sign(ballRigidBody.velocity.x) * speed_X / 70f, (Mathf.Sign(ballRigidBody.velocity.y)) * speed_Y / 70f);
+                }
+            }
         }
     }
- }
 
- void OnCollisionEnter2D(Collision2D coll)
+    void OnCollisionEnter2D(Collision2D coll)
     {
         // Если шарик "залипнет" на оси Х, то будет добавлена сила, чтобы изменить траекторию
         if (hitTimeOutPositionX != transform.position.x)
@@ -194,7 +211,7 @@ public class BallScript : MonoBehaviour
         }
     }
 
-    void RandomAngle ()
+    void RandomAngle()
     {
         speed_X = 280.0f;
         speed_X = Random.Range(-speed_X, speed_X);

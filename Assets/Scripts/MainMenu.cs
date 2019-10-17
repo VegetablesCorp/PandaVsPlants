@@ -15,6 +15,8 @@ public class MainMenu : MonoBehaviour
             case "shop_button": Debug.Log("Shop"); break;
             case "set_button": Debug.Log("Settings"); break;
             case "exit_button": Debug.Log("Exit"); break;
+            case "return": SceneManager.LoadScene("Level1"); break;
+            case "home": SceneManager.LoadScene("MainMenu"); break;
         }
     }
 }

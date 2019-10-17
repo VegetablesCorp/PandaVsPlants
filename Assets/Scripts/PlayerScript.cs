@@ -12,14 +12,21 @@ public class PlayerScript : MonoBehaviour
     private int playerLives;
     private int playerPoints;
 
+    public GameObject CanvasLoose;
+
+    public bool loose;
+    public bool win;
     // Start is called before the first frame update
     void Start()
     {
     // получим начальную позицию платформы
     playerPosition = gameObject.transform.position;
 
-        playerLives = 3;
+        playerLives = 0;
         playerPoints = 0;
+
+        loose = false;
+        win = false;
     }
 
     void addPoints(int points)
@@ -29,13 +36,13 @@ public class PlayerScript : MonoBehaviour
 
     void TakeLife()
     {
-        if (playerLives == 0)
-        {
-            SceneManager.LoadScene("MainMenu");
-        }
-        else
+        if(playerLives != 0)
         {
             playerLives--;
+        }
+        else {
+            loose = true;
+            CanvasLoose.SetActive(true);
         }
     }
 
@@ -47,28 +54,31 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // горизонтальное движение
-        playerPosition.x += Input.GetAxis("Mouse X") * playerSpeed * Time.deltaTime;
-
-        // выход из игры
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (loose == false)
         {
-            Application.Quit();
-        }
+            // горизонтальное движение
+            playerPosition.x += Input.GetAxis("Mouse X") * playerSpeed * Time.deltaTime;
 
-        // обновим позицию платформы
-        transform.position = playerPosition;
+            // выход из игры
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                Application.Quit();
+            }
 
-        // проверка выхода за границы
-        if (playerPosition.x < -boundary)
-        {
-            transform.position = new Vector3(-boundary, playerPosition.y, playerPosition.z);
-        }
-        if (playerPosition.x > boundary)
-        {
-            transform.position = new Vector3(boundary, playerPosition.y, playerPosition.z);
-        }
+            // обновим позицию платформы
+            transform.position = playerPosition;
 
-        playerPosition = transform.position;
+            // проверка выхода за границы
+            if (playerPosition.x < -boundary)
+            {
+                transform.position = new Vector3(-boundary, playerPosition.y, playerPosition.z);
+            }
+            if (playerPosition.x > boundary)
+            {
+                transform.position = new Vector3(boundary, playerPosition.y, playerPosition.z);
+            }
+
+            playerPosition = transform.position;
+        }
     }
 }
