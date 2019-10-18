@@ -20,7 +20,7 @@ public class BallScript : MonoBehaviour
 
     private float speed_X;
     private float speed_Y;
-    private const float Z = 316.0f;
+    public float Z = 316.0f;
     private float koef;
     private int idc;
 
@@ -121,7 +121,7 @@ public class BallScript : MonoBehaviour
 
                 ballStopped = false;
 
-                floose = Racket.loose;
+                floose = Racket.getLoose();
                 fwin = Racket.win;
                 if ((floose == false) && (fwin == false))
                 {

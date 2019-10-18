@@ -3363,7 +3363,6 @@ MonoBehaviour:
   playerSpeed: 12
   boundary: 1.97
   CanvasLoose: {fileID: 1595200800}
-  loose: 0
   win: 0
 --- !u!1001 &922776788
 PrefabInstance:
@@ -6508,6 +6507,7 @@ MonoBehaviour:
   playerObject: {fileID: 918054494}
   ballStopped: 0
   drag_ball: 0
+  Z: 400
   Racket: {fileID: 918054498}
   floose: 0
   fwin: 0

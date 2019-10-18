@@ -14,7 +14,7 @@ public class PlayerScript : MonoBehaviour
 
     public GameObject CanvasLoose;
 
-    public bool loose;
+    private bool loose;
     public bool win;
     // Start is called before the first frame update
     void Start()
@@ -22,11 +22,21 @@ public class PlayerScript : MonoBehaviour
     // получим начальную позицию платформы
     playerPosition = gameObject.transform.position;
 
-        playerLives = 0;
+        playerLives = 2;
         playerPoints = 0;
 
         loose = false;
         win = false;
+    }
+
+    public bool getLoose()
+    {
+        return this.loose;
+    }
+
+    public void setLoose(bool loose)
+    {
+        this.loose = loose;
     }
 
     void addPoints(int points)
