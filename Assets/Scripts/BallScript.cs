@@ -25,8 +25,8 @@ public class BallScript : MonoBehaviour
     private int idc;
 
     public PlayerScript Racket;
-    public bool floose;
-    public bool fwin;
+    private bool loose;
+    private bool win;
 
   
     // Start is called before the first frame update
@@ -60,11 +60,14 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(fwin == true) { 
+        //Определение выигрыша или проигрыша игрока
+        loose = Racket.getLoose();
+        win = Racket.getWin();
+        if (win == true) { 
             ballRigidBody.drag = 7.0f;
         }
 
-        if ((floose == false)&&(fwin == false))
+        if ((loose == false)&&(win == false))
         {
             // проверка нажатия на пробел
             if (Input.GetMouseButton(0) == true)
@@ -124,10 +127,10 @@ public class BallScript : MonoBehaviour
 
                 ballStopped = false;
 
-                floose = Racket.getLoose();
-                fwin = Racket.getWin();
+                loose = Racket.getLoose();
+                win = Racket.getWin();
                 
-                if ((floose == false) && (fwin == false))
+                if ((loose == false) && (win == false))
                 {
                     drag_ball = 0.0f;
                     ballRigidBody.drag = drag_ball;

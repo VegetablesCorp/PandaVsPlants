@@ -4452,7 +4452,7 @@ PrefabInstance:
     - target: {fileID: 6439502474735401845, guid: 62b976273b2cff44bb14bca0cf8bc6bd,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 6439502474735401845, guid: 62b976273b2cff44bb14bca0cf8bc6bd,
         type: 3}
@@ -6474,7 +6474,7 @@ PrefabInstance:
     - target: {fileID: 6472124679360828253, guid: b4151ad905bec0148bcf69914b49d701,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 6472124679360828253, guid: b4151ad905bec0148bcf69914b49d701,
         type: 3}
@@ -7138,8 +7138,6 @@ MonoBehaviour:
   drag_ball: 0
   Z: 400
   Racket: {fileID: 918054498}
-  floose: 0
-  fwin: 0
 --- !u!1 &1904308520
 GameObject:
   m_ObjectHideFlags: 0
