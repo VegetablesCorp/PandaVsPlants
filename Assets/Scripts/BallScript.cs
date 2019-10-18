@@ -60,7 +60,10 @@ public class BallScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(fwin == true) { 
+            ballRigidBody.drag = 7.0f;
+        }
+
         if ((floose == false)&&(fwin == false))
         {
             // проверка нажатия на пробел
@@ -122,7 +125,8 @@ public class BallScript : MonoBehaviour
                 ballStopped = false;
 
                 floose = Racket.getLoose();
-                fwin = Racket.win;
+                fwin = Racket.getWin();
+                
                 if ((floose == false) && (fwin == false))
                 {
                     drag_ball = 0.0f;

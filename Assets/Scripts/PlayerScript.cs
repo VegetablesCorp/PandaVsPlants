@@ -13,9 +13,10 @@ public class PlayerScript : MonoBehaviour
     private int playerPoints;
 
     public GameObject CanvasLoose;
+    public GameObject CanvasWin;
 
     private bool loose;
-    public bool win;
+    private bool win;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +40,16 @@ public class PlayerScript : MonoBehaviour
         this.loose = loose;
     }
 
+    public bool getWin()
+    {
+        return this.win;
+    }
+
+    public void setWin(bool win)
+    {
+        this.win = win;
+    }
+
     void addPoints(int points)
     {
         playerPoints += points;
@@ -59,36 +70,42 @@ public class PlayerScript : MonoBehaviour
     void OnGUI()
     {
         GUI.Label(new Rect(5.0f, 3.0f, 200.0f, 200.0f), "Live's: " + playerLives + "  Score: " + playerPoints);
+        if(win == true)
+        {
+            CanvasWin.SetActive(true);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (loose == false)
+        if ((loose == false) && (win == false))
         {
-            // горизонтальное движение
-            playerPosition.x += Input.GetAxis("Mouse X") * playerSpeed * Time.deltaTime;
-
-            // выход из игры
-            if (Input.GetKeyDown(KeyCode.Escape))
             {
-                Application.Quit();
-            }
+                // горизонтальное движение
+                playerPosition.x += Input.GetAxis("Mouse X") * playerSpeed * Time.deltaTime;
 
-            // обновим позицию платформы
-            transform.position = playerPosition;
+                // выход из игры
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                }
 
-            // проверка выхода за границы
-            if (playerPosition.x < -boundary)
-            {
-                transform.position = new Vector3(-boundary, playerPosition.y, playerPosition.z);
-            }
-            if (playerPosition.x > boundary)
-            {
-                transform.position = new Vector3(boundary, playerPosition.y, playerPosition.z);
-            }
+                // обновим позицию платформы
+                transform.position = playerPosition;
 
-            playerPosition = transform.position;
+                // проверка выхода за границы
+                if (playerPosition.x < -boundary)
+                {
+                    transform.position = new Vector3(-boundary, playerPosition.y, playerPosition.z);
+                }
+                if (playerPosition.x > boundary)
+                {
+                    transform.position = new Vector3(boundary, playerPosition.y, playerPosition.z);
+                }
+
+                playerPosition = transform.position;
+            }
         }
     }
 }
