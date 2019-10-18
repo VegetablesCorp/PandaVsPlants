@@ -99,7 +99,11 @@ MonoBehaviour:
   m_MinSize: {x: 887, y: 348}
   m_MaxSize: {x: 16012, y: 8048}
   vertical: 0
+<<<<<<< HEAD
   controlID: 36
+=======
+  controlID: 78
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -270,7 +274,11 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 348}
   m_MaxSize: {x: 12010, y: 8048}
   vertical: 1
+<<<<<<< HEAD
   controlID: 37
+=======
+  controlID: 111
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -296,7 +304,11 @@ MonoBehaviour:
   m_MinSize: {x: 610, y: 224}
   m_MaxSize: {x: 12010, y: 4024}
   vertical: 0
+<<<<<<< HEAD
   controlID: 38
+=======
+  controlID: 112
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -346,9 +358,15 @@ MonoBehaviour:
     m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
     m_SelectedIDs: 722f0000
     m_LastClickedID: 12146
     m_ExpandedIDs: 00000000862c00006832000000ca9a3b
+=======
+    m_SelectedIDs: ae290000
+    m_LastClickedID: 10670
+    m_ExpandedIDs: 0000000066260000d42c000000ca9a3b
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -376,7 +394,11 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
+<<<<<<< HEAD
     m_ExpandedIDs: 00000000862c000068320000
+=======
+    m_ExpandedIDs: 0000000066260000d42c0000
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -495,9 +517,15 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
+<<<<<<< HEAD
       m_SelectedIDs: 92300000
       m_LastClickedID: 12434
       m_ExpandedIDs: aef6ffff443000007e300000bc300000c0300000143100006431000076310000
+=======
+      m_SelectedIDs: cc2b0000
+      m_LastClickedID: 11212
+      m_ExpandedIDs: d8fbffffe62a00007c2b0000cc2b0000
+>>>>>>> fc3ce013664f07c51647ff6e42f7fd665718a7fc
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: PolygonsPack
