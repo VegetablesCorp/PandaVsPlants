@@ -17,6 +17,7 @@ public class MainMenu : MonoBehaviour
             case "exit_button": Debug.Log("Exit"); break;
             case "return": SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
             case "home": SceneManager.LoadScene("MainMenu"); break;
+            case "check": Debug.Log("Next Level"); break;
         }
     }
 }
