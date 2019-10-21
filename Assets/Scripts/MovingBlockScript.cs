@@ -12,10 +12,15 @@ public class MovingBlockScript : MonoBehaviour
 
     //Число ударов, которые получил блок
     private int numberOfHits;
+    private Vector2 overlap_1;
+    private Vector2 overlap_2;
+   
 
     private Vector2 blockPosition;
     public float blockSpeed;
     public int signBlockSpeed;
+
+
 
     public int getSign()
     {
@@ -31,6 +36,12 @@ public class MovingBlockScript : MonoBehaviour
     void Start()
     {
         numberOfHits = 0;
+        overlap_1 = new Vector2(-1.0f, -1.0f);
+        overlap_2 = new Vector2(-2.0f, -2.0f);
+
+        if ((Physics2D.OverlapArea(overlap_1, overlap_2)) == null) { Debug.Log("1"); }
+        else { Debug.Log("2"); }
+
         blockPosition.x = transform.position.x;
         blockPosition.y = transform.position.y;
         signBlockSpeed = 1;
