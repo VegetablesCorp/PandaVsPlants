@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1671216811329838221}
   m_Layer: 0
   m_Name: MoveGreyRectangle
-  m_TagString: MoveBlock
+  m_TagString: MoveRectangle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

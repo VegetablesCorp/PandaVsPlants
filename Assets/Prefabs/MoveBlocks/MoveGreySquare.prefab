@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 9200286533753851966}
   m_Layer: 0
   m_Name: MoveGreySquare
-  m_TagString: MoveBlock
+  m_TagString: MoveSquare
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

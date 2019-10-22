@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8111933412731403760}
   m_Layer: 0
   m_Name: MoveGreenDiamond
-  m_TagString: MoveBlock
+  m_TagString: MovePolygon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

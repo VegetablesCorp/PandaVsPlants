@@ -5,10 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
-  - BoardRight
   - MoveBlock
   - Block
   - Border
+  - MovePolygon
+  - MoveRectangle
+  - MoveSquare
   layers:
   - Default
   - TransparentFX
