@@ -6,7 +6,7 @@ public class AllBlocksScript : MonoBehaviour
 
 {
     //Создание связи со скриптом игрока
-    public PlayerScript winPlayer;
+    public SystemControlScript SystemControl;
 
     //подсчёт блоков на уровне
     private int changeCountBlocks;
@@ -37,7 +37,6 @@ public class AllBlocksScript : MonoBehaviour
 
         //transform.hierarchyCount - всего объектов в иерархии Blocks включая сам объект Blocks
         changeCountBlocks = transform.hierarchyCount - countChildObjects;
-        Debug.Log(changeCountBlocks);
     }
 
     // Update is called once per frame
@@ -47,13 +46,12 @@ public class AllBlocksScript : MonoBehaviour
          if (changeCountBlocks > transform.hierarchyCount - countChildObjects)
         {
             changeCountBlocks = transform.hierarchyCount - countChildObjects;
-            Debug.Log(gameObject.name + "= " + (transform.hierarchyCount - countChildObjects));
         }
 
         //проверка на победу игрока (разрушены ли все блоки на уровни)
         if (transform.hierarchyCount == countChildObjects)
         {
-            winPlayer.setWin(true);
+            SystemControl.setWin(true);
             Destroy(gameObject);
         }
     }

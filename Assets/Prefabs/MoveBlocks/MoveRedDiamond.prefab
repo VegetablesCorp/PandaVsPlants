@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitsToKill: 1
-  points: 1
+  points: 10
   blockSpeed: 1
   signBlockSpeed: 0
 --- !u!60 &2134354200468213563

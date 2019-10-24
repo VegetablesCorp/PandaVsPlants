@@ -15,6 +15,9 @@ public class PlayerScript : MonoBehaviour
     public GameObject PanelLoose;
     public GameObject PanelWin;
 
+    public GameObject Lives;
+
+    public SystemControlScript SystemControl;
     private bool loose;
     private bool win;
     // Start is called before the first frame update
@@ -26,28 +29,8 @@ public class PlayerScript : MonoBehaviour
         playerLives = 2;
         playerPoints = 0;
 
-        loose = false;
-        win = false;
-    }
-
-    public bool getLoose()
-    {
-        return this.loose;
-    }
-
-    public void setLoose(bool loose)
-    {
-        this.loose = loose;
-    }
-
-    public bool getWin()
-    {
-        return this.win;
-    }
-
-    public void setWin(bool win)
-    {
-        this.win = win;
+        SystemControl.setLoose(false);
+        SystemControl.setWin(false);
     }
 
     void addPoints(int points)
@@ -60,17 +43,37 @@ public class PlayerScript : MonoBehaviour
         if(playerLives != 0)
         {
             playerLives--;
+            switch(playerLives)
+            {
+                case 0:
+                    {
+                        Lives = GameObject.Find("Live2");
+                        Lives.SetActive(false);
+                        playerPoints = playerPoints / 2;
+                        break;
+                    }
+                case 1:
+                    {
+                        Lives = GameObject.Find("Live3");
+                        Lives.SetActive(false);
+                        playerPoints = playerPoints / 2;
+                        break;
+                    }
+            }
         }
         else {
-            loose = true;
+            Lives = GameObject.Find("Live1");
+            Lives.SetActive(false);
+            playerPoints = playerPoints / 2;
+            SystemControl.setLoose(true);
             PanelLoose.SetActive(true);
         }
     }
 
     void OnGUI()
     {
-        GUI.Label(new Rect(5.0f, 3.0f, 200.0f, 200.0f), "Live's: " + playerLives + "  Score: " + playerPoints);
-        if(win == true)
+        PlayerPrefs.SetInt("Score", playerPoints);
+        if (win == true)
         {
             PanelWin.SetActive(true);
         }
@@ -79,6 +82,9 @@ public class PlayerScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        win = SystemControl.getWin();
+        loose = SystemControl.getLoose();
+ 
         if ((loose == false) && (win == false))
         {
             {

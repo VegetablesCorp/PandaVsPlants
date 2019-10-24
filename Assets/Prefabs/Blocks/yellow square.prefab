@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitsToKill: 1
-  points: 25
+  points: 10
 --- !u!50 &50250912619245740
 Rigidbody2D:
   serializedVersion: 4

@@ -24,7 +24,7 @@ public class BallScript : MonoBehaviour
     private float koef;
     private int idc;
 
-    public PlayerScript Racket;
+    public SystemControlScript SystemControl;
     private bool loose;
     private bool win;
 
@@ -61,8 +61,8 @@ public class BallScript : MonoBehaviour
     void Update()
     {
         //Определение выигрыша или проигрыша игрока
-        loose = Racket.getLoose();
-        win = Racket.getWin();
+        loose = SystemControl.getLoose();
+        win = SystemControl.getWin();
         if (win == true) { 
             ballRigidBody.drag = 7.0f;
         }
@@ -127,8 +127,8 @@ public class BallScript : MonoBehaviour
 
                 ballStopped = false;
 
-                loose = Racket.getLoose();
-                win = Racket.getWin();
+                loose = SystemControl.getLoose();
+                win = SystemControl.getWin();
                 
                 if ((loose == false) && (win == false))
                 {
