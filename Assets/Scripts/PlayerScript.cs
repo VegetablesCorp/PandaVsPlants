@@ -12,8 +12,8 @@ public class PlayerScript : MonoBehaviour
     private int playerLives;
     private int playerPoints;
 
-    public GameObject CanvasLoose;
-    public GameObject CanvasWin;
+    public GameObject PanelLoose;
+    public GameObject PanelWin;
 
     private bool loose;
     private bool win;
@@ -63,7 +63,7 @@ public class PlayerScript : MonoBehaviour
         }
         else {
             loose = true;
-            CanvasLoose.SetActive(true);
+            PanelLoose.SetActive(true);
         }
     }
 
@@ -72,7 +72,7 @@ public class PlayerScript : MonoBehaviour
         GUI.Label(new Rect(5.0f, 3.0f, 200.0f, 200.0f), "Live's: " + playerLives + "  Score: " + playerPoints);
         if(win == true)
         {
-            CanvasWin.SetActive(true);
+            PanelWin.SetActive(true);
         }
     }
 

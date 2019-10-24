@@ -6,9 +6,14 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     Scene scene;
+
+    public GameObject PanelPause;
+    private bool paused = false;
+    public SystemControlScript SystemControl;
+
     void OnMouseUpAsButton()
     {
-        switch(gameObject.name)
+        switch (gameObject.name)
         {
             case "play_button":
                 {
@@ -36,24 +41,50 @@ public class MainMenu : MonoBehaviour
                 }
             case "return":
                 {
+                    SystemControl.setPause(false);
+                    Time.timeScale = 1;
                     SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
                 }
             case "home":
                 {
+                    SystemControl.setPause(false);
+                    Time.timeScale = 1;
                     SceneManager.LoadScene("MainMenu"); break;
+                }
+            case "pauseButton":
+                {
+                    Time.timeScale = 0;
+                    SystemControl.setPause(true);
+                    PanelPause.SetActive(true);
+                    paused = SystemControl.getPause();
+                    Debug.Log(paused);
+                    break;
                 }
             case "check":
                 {
-                    scene = SceneManager.GetActiveScene();
-                    int sceneIndex = scene.buildIndex;
-                    sceneIndex++;
-                    if(sceneIndex > 5)
+                    paused = SystemControl.getPause();
+                    if (paused == true)
                     {
-                        sceneIndex = 0;
+                        Time.timeScale = 1;
+                        Debug.Log("paused = true");
+                        SystemControl.setPause(false);
+                        PanelPause.SetActive(false);
+                        
                     }
-                    SceneManager.LoadScene(sceneIndex);
+                    else 
+                        {
+                        scene = SceneManager.GetActiveScene();
+                        int sceneIndex = scene.buildIndex;
+                        sceneIndex++;
+                        if (sceneIndex > 5)
+                           {
+                              sceneIndex = 0;
+                           }
+                        SceneManager.LoadScene(sceneIndex);
+                       }
+                    break;
                 }
-                break;
+                
         }
     }
 }
