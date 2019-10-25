@@ -19,6 +19,11 @@ public class BlockScript : MonoBehaviour
     void Start()
     {
         numberOfHits = 0;
+        //получаем ссылку на платформу
+        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
+
+        // выполняем метод из другого скрипта
+        player.SendMessage("setMaxPoints", points);
     }
 
     //Переопределение метода OnCollisionEnter2D

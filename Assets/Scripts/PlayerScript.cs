@@ -11,6 +11,7 @@ public class PlayerScript : MonoBehaviour
 
     private int playerLives;
     private int playerPoints;
+    private int maxPoints;
 
     public GameObject PanelLoose;
     public GameObject PanelWin;
@@ -18,6 +19,8 @@ public class PlayerScript : MonoBehaviour
     public GameObject Lives;
 
     public SystemControlScript SystemControl;
+
+    private bool checkWin;
     private bool loose;
     private bool win;
     // Start is called before the first frame update
@@ -29,6 +32,8 @@ public class PlayerScript : MonoBehaviour
         playerLives = 2;
         playerPoints = 0;
 
+        checkWin = false;
+
         SystemControl.setLoose(false);
         SystemControl.setWin(false);
     }
@@ -38,25 +43,29 @@ public class PlayerScript : MonoBehaviour
         playerPoints += points;
     }
 
+    public void setMaxPoints(int maxPoints)
+    {
+        this.maxPoints += maxPoints;
+    }
+
     void TakeLife()
     {
         if(playerLives != 0)
         {
             playerLives--;
-            switch(playerLives)
+            playerPoints = playerPoints - (30 * playerPoints) / 100;
+            switch (playerLives)
             {
                 case 0:
                     {
                         Lives = GameObject.Find("Live2");
                         Lives.SetActive(false);
-                        playerPoints = playerPoints / 2;
                         break;
                     }
                 case 1:
                     {
                         Lives = GameObject.Find("Live3");
                         Lives.SetActive(false);
-                        playerPoints = playerPoints / 2;
                         break;
                     }
             }
@@ -64,7 +73,6 @@ public class PlayerScript : MonoBehaviour
         else {
             Lives = GameObject.Find("Live1");
             Lives.SetActive(false);
-            playerPoints = playerPoints / 2;
             SystemControl.setLoose(true);
             PanelLoose.SetActive(true);
         }
@@ -73,9 +81,11 @@ public class PlayerScript : MonoBehaviour
     void OnGUI()
     {
         PlayerPrefs.SetInt("Score", playerPoints);
-        if (win == true)
+        if ((win == true)&&(checkWin == false))
         {
+            Debug.Log(maxPoints);
             PanelWin.SetActive(true);
+            checkWin = true;
         }
     }
 
