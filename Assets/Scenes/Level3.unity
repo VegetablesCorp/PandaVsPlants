@@ -346,8 +346,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 12
   boundary: 1.97
-  CanvasLoose: {fileID: 1595200800}
-  CanvasWin: {fileID: 447648063}
+  PanelLoose: {fileID: 0}
+  PanelWin: {fileID: 0}
+  Lives: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!212 &71318797
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -740,6 +742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &186713954
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -1738,6 +1742,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &350279747
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -3644,6 +3650,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!1001 &653005299
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4048,7 +4056,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c1297c0c8c436649a0340a736f790b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  winPlayer: {fileID: 71318796}
+  SystemControl: {fileID: 0}
   waypoints: []
 --- !u!4 &765097852
 Transform:
@@ -4575,6 +4583,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &892793087
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7374,6 +7384,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &1649783023
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -7685,6 +7697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &1713916429
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -8289,6 +8303,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!1001 &1804807257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8532,6 +8548,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6a7cd03476fe84b8d7dd7ffc649731, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PanelPause: {fileID: 0}
+  SystemControl: {fileID: 0}
 --- !u!60 &1836278626
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -9130,7 +9148,7 @@ PrefabInstance:
     - target: {fileID: 7959495287440395242, guid: 38f6cda9741628a41bb5d1050d371393,
         type: 3}
       propertyPath: m_Mass
-      value: 0.5
+      value: 100000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 38f6cda9741628a41bb5d1050d371393, type: 3}
@@ -9344,7 +9362,7 @@ MonoBehaviour:
   ballStopped: 0
   drag_ball: 0
   Z: 320
-  Racket: {fileID: 71318796}
+  SystemControl: {fileID: 0}
 --- !u!1 &1900295488
 GameObject:
   m_ObjectHideFlags: 0

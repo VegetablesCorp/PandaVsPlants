@@ -37,7 +37,9 @@ public class MainMenu : MonoBehaviour
 
             case "exit_button":
                 {
-                    Debug.Log("Exit"); break;
+                    Debug.Log("Exit");
+                    Application.Quit();
+                    break;
                 }
             case "return":
                 {

@@ -91,12 +91,6 @@ public class PlayerScript : MonoBehaviour
                 // горизонтальное движение
                 playerPosition.x += Input.GetAxis("Mouse X") * playerSpeed * Time.deltaTime;
 
-                // выход из игры
-                if (Input.GetKeyDown(KeyCode.Escape))
-                {
-                    Application.Quit();
-                }
-
                 // обновим позицию платформы
                 transform.position = playerPosition;
 
