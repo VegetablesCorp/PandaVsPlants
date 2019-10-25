@@ -35,6 +35,7 @@ public class AllBlocksScript : MonoBehaviour
         //Число дочерних объектов у объекта Blocks
         countChildObjects++;
 
+        Debug.Log(countChildObjects);
         //transform.hierarchyCount - всего объектов в иерархии Blocks включая сам объект Blocks
         changeCountBlocks = transform.hierarchyCount - countChildObjects;
     }

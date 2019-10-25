@@ -115,8 +115,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7378b661d7da2246ac8c6832a642418, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToKill: 1
-  points: 10
+  hitsToKill: 3
+  points: 150
   blockSpeed: 1
   signBlockSpeed: 0
 --- !u!61 &1671216811329838221
