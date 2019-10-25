@@ -17,6 +17,7 @@ public class PlayerScript : MonoBehaviour
     public GameObject PanelWin;
 
     public GameObject Lives;
+    public Transform Stars;
 
     public SystemControlScript SystemControl;
 
@@ -85,6 +86,13 @@ public class PlayerScript : MonoBehaviour
         {
             Debug.Log(maxPoints);
             PanelWin.SetActive(true);
+
+            Transform stars = Stars.GetChild(3);
+            Debug.Log(stars.toString);
+            stars.GetChild(0).setActive(false);
+            Debug.Log(stars.GetChild(0));
+            stars.GetChild(3).setActive(true);
+            Debug.Log(stars.GetChild(3));
             checkWin = true;
         }
     }
