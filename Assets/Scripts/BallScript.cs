@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class BallScript : MonoBehaviour
 {
-    private bool ballIsActive;
-    private Vector3 ballPosition;
-    private Vector2 ballInitialForce;
+    public SystemControlScript SystemControl;
     public GameObject playerObject;
 
-    public bool ballStopped;
+    private Rigidbody2D ballRigidBody;
     public float drag_ball;
 
-    private Rigidbody2D ballRigidBody;
+    private bool ballIsActive;
+    public bool ballStopped;
 
+    private Vector3 ballPosition;
+    private Vector2 ballInitialForce;
+  
     private int hitTimeOut;
     private float hitTimeOutPositionX;
     private float hitTimeOutPositionY;
@@ -22,14 +24,11 @@ public class BallScript : MonoBehaviour
     private float speed_Y;
     public float Z = 316.0f;
     private float koef;
+
     private int idc;
 
-    public SystemControlScript SystemControl;
-    private bool loose;
-    private bool win;
-
+    private int playerLives;
   
-    // Start is called before the first frame update
     void Start()
     {
         ballStopped = false;
@@ -45,30 +44,25 @@ public class BallScript : MonoBehaviour
         // переводим в неактивное состояние
         ballIsActive = false;
 
-        // запоминаем положение
+        // запоминаем положение шара
         ballPosition = transform.position;
 
+        //Ссылка на компонент Rigidbody2D
         ballRigidBody = GetComponent<Rigidbody2D>();
 
+        //Переменные для проверки процесса залипания шарика на осях Х и У
         hitTimeOut = 0;
         hitTimeOutPositionX = 0;
         hitTimeOutPositionY = 0;
 
+        //Сопротивление среды
         drag_ball = 0;
+
+        playerLives = SystemControl.getLife();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //Определение выигрыша или проигрыша игрока
-        loose = SystemControl.getLoose();
-        win = SystemControl.getWin();
-        if (win == true) { 
-            ballRigidBody.drag = 7.0f;
-        }
-
-        if ((loose == false)&&(win == false))
-        {
             // проверка нажатия на пробел
             if (Input.GetMouseButton(0) == true)
             {
@@ -79,7 +73,7 @@ public class BallScript : MonoBehaviour
                     // сброс всех сил
                     ballRigidBody.isKinematic = false;
 
-                    // применим силу
+                    // применим начальную силу для шарика
                     RandomAngle();
                     ballInitialForce = new Vector2(speed_X, speed_Y);
                     ballRigidBody.AddForce(ballInitialForce);
@@ -92,7 +86,7 @@ public class BallScript : MonoBehaviour
 
             if (!ballIsActive && playerObject != null)
             {
-                // задаем новую позицию шарика
+                // задаем новую позицию шарика равной позиции ракетки
                 ballPosition.x = playerObject.transform.position.x;
 
                 // устанавливаем позицию шара
@@ -122,24 +116,19 @@ public class BallScript : MonoBehaviour
 
             if (ballStopped == true)
             {
-                //добавили вызов метода
-                playerObject.SendMessage("TakeLife");
-
+                //добавили вызов метода Отнятие жизни
+                playerLives--;
+                SystemControl.TakeLife(playerLives);
+ 
                 ballStopped = false;
-
-                loose = SystemControl.getLoose();
-                win = SystemControl.getWin();
                 
-                if ((loose == false) && (win == false))
-                {
-                    drag_ball = 0.0f;
-                    ballRigidBody.drag = drag_ball;
-                    ballIsActive = !ballIsActive;
-                    ballPosition.x = playerObject.transform.position.x;
-                    ballPosition.y = playerObject.transform.position.y + 0.36f;
-                    transform.position = ballPosition;
-                    ballRigidBody.isKinematic = true;
-                }
+                drag_ball = 0.0f;
+                ballRigidBody.drag = drag_ball;
+                ballIsActive = !ballIsActive;
+                ballPosition.x = playerObject.transform.position.x;
+                ballPosition.y = playerObject.transform.position.y + 0.36f;
+                transform.position = ballPosition;
+                ballRigidBody.isKinematic = true;
             }
 
             idc++;
@@ -169,7 +158,7 @@ public class BallScript : MonoBehaviour
                     ballRigidBody.velocity = new Vector2(Mathf.Sign(ballRigidBody.velocity.x) * speed_X / 70f, (Mathf.Sign(ballRigidBody.velocity.y)) * speed_Y / 70f);
                 }
             }
-        }
+        //}
     }
 
     void OnCollisionEnter2D(Collision2D coll)

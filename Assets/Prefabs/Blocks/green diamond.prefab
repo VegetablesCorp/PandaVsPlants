@@ -127,6 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dccf443b3c439c74296cb67610ff04c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SystemControl: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+    type: 3}
   hitsToKill: 1
   points: 30
 --- !u!50 &50394408046635240
