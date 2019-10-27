@@ -6,6 +6,9 @@ using UnityEngine;
 public class BlockScript : MonoBehaviour
 {
     public SystemControlScript SystemControl;
+    public AllBlocksScript Block;
+
+    private int blocksDestroyed;
     //число ударов по блоку, чтобы разрушить его
     public int hitsToKill;
     
@@ -17,6 +20,7 @@ public class BlockScript : MonoBehaviour
 
     void Start()
     {
+        blocksDestroyed = 1;
         numberOfHits = 0;
         SystemControl.setMaxPoints(points);
     }
@@ -31,6 +35,7 @@ public class BlockScript : MonoBehaviour
         if (numberOfHits == hitsToKill)
             {
                 SystemControl.addPoints(points);
+                Block.blockDestroy(blocksDestroyed);
                 Destroy(this.gameObject);
             }
     }

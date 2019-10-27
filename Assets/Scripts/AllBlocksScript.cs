@@ -8,52 +8,46 @@ public class AllBlocksScript : MonoBehaviour
     //Создание связи со скриптом игрока
     public SystemControlScript SystemControl;
 
-    //подсчёт блоков на уровне
-    private int changeCountBlocks;
-
-    public Transform[] waypoints;
+    public Transform[] blockTypes;
 
     //количество дочерних объектов у объекта Blocks
-    private int countChildObjects;
+    private int countBlocksType;
+    private int countBlocks;
+    private int blocksDestroyed;
 
-
-    // Start is called before the first frame update
    void Start()
     {
-        countChildObjects = 0;
+        countBlocksType = 0;
+        countBlocks = 0;
 
         //Получение всех дочерних объектов для объекта Blocks
-        waypoints = new Transform[transform.childCount];
+        blockTypes = new Transform[transform.childCount];
 
         int i = 0;
 
         foreach (Transform t in transform)
         {
-            waypoints[i++] = t;
-            countChildObjects++;
+            blockTypes[i++] = t;
+            countBlocksType++;
         }
 
-        //Число дочерних объектов у объекта Blocks
-        countChildObjects++;
-
-        //transform.hierarchyCount - всего объектов в иерархии Blocks включая сам объект Blocks
-        changeCountBlocks = transform.hierarchyCount - countChildObjects;
+        //Получение всех дочерних объектов каждой группы блоков
+        for (i = 0; i < countBlocksType; i++)
+        {
+            foreach (Transform child in blockTypes[i])
+            {
+               countBlocks++;
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    //Проверка уничтожения игроком всех блоков на уровне
+    public void blockDestroy(int blocksDestroyed)
     {
-        //вывод количества блоков на уровне при уничтожении какого-либо из блоков
-         if (changeCountBlocks > transform.hierarchyCount - countChildObjects)
-        {
-            changeCountBlocks = transform.hierarchyCount - countChildObjects;
-        }
-
-        //проверка на победу игрока (разрушены ли все блоки на уровни)
-        if (transform.hierarchyCount == countChildObjects)
+        this.blocksDestroyed += blocksDestroyed;
+        if (this.blocksDestroyed == countBlocks)
         {
             SystemControl.setWin(true);
-            Destroy(gameObject);
         }
     }
 }

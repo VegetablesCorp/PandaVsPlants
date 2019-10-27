@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class PlayerScript : MonoBehaviour
 {
-    public GameObject PanelLoose;
-    public GameObject PanelWin;
-    public GameObject Lives;
-    public SystemControlScript SystemControl;
-
     public float playerSpeed;   
     private Vector3 playerPosition;
     public float boundary;

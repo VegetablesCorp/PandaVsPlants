@@ -5,6 +5,9 @@ using UnityEngine;
 public class MovingBlockScript : MonoBehaviour
 {
     public SystemControlScript SystemControl;
+    public AllBlocksScript Block;
+
+    private int blocksDestroyed;
 
     //число ударов по блоку, чтобы разрушить его
     public int hitsToKill;
@@ -53,6 +56,8 @@ public class MovingBlockScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blocksDestroyed = 1;
+
         isMoving = false;
         x1 = x2 = y1 = y2 = 0.0f;
         x3 = x4 = y3 = y4 = 0.0f;
@@ -138,6 +143,7 @@ public class MovingBlockScript : MonoBehaviour
                     if (numberOfHits == hitsToKill)
                     {
                         SystemControl.addPoints(points);
+                        Block.blockDestroy(blocksDestroyed);
                         Destroy(this.gameObject);
                     }
                     break;

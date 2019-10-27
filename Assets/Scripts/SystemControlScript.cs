@@ -8,6 +8,8 @@ public class SystemControlScript : MonoBehaviour
     public GameObject PanelLoose;
     public GameObject PanelWin;
 
+    private GameObject Stars;
+
     private bool paused;
     private bool loose;
     private bool win;
@@ -24,12 +26,15 @@ public class SystemControlScript : MonoBehaviour
 
         loose = false;
         win = false;
+
+        Stars = PanelWin.transform.Find("Stars").gameObject;
+        Stars.SetActive(true);
+        for (int i = 0; i < Stars.transform.childCount; i++)
+        {
+            Stars.transform.GetChild(i).gameObject.SetActive(false); // Выключаем или включаем каждого полученного ребёнка по порядку.
+        }
     }
 
-    void Update()
-    {
-        
-    }
     public bool getPause()
     {
         return this.paused;
@@ -58,16 +63,37 @@ public class SystemControlScript : MonoBehaviour
     public void setWin(bool win)
     {
         this.win = win;
-        if (win == true)
+        if (this.win == true)
         {
             PanelWin.SetActive(true);
+            if(this.playerPoints > this.maxPoints*70/100)
+            {
+                Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
+                Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
+                Stars.transform.Find("pandaStar3").gameObject.SetActive(true);
+                Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 3 stars");
+            }
+            else if(this.playerPoints <= this.maxPoints * 50 / 100)
+            {
+                Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
+                Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
+                Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
+                Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 1 star");
+            }
+            else
+            {
+                Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
+                Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
+                Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
+                Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 2 stars");
+            }
             Time.timeScale = 0;
         }
     }
 
     public void TakeLife(int playerLives)
     {
-        playerPoints -= (30 * playerPoints) / 100;
+        this.playerPoints -= (30 * this.playerPoints) / 100;
         switch (playerLives)
         {
             case 0:
@@ -102,10 +128,10 @@ public class SystemControlScript : MonoBehaviour
 
     public void addPoints(int points)
     {
-        playerPoints += points;
+        this.playerPoints += points;
     }
     void OnGUI()
     {
-        PlayerPrefs.SetInt("Score", playerPoints);
+        PlayerPrefs.SetInt("Score", this.playerPoints);
     }
 }
