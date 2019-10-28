@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class MovingBlockScript : MonoBehaviour
 {
+    public SystemControlScript SystemControl;
+    public AllBlocksScript Block;
+
+    private int blocksDestroyed;
+
     //число ударов по блоку, чтобы разрушить его
     public int hitsToKill;
 
@@ -51,6 +56,8 @@ public class MovingBlockScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        blocksDestroyed = 1;
+
         isMoving = false;
         x1 = x2 = y1 = y2 = 0.0f;
         x3 = x4 = y3 = y4 = 0.0f;
@@ -84,8 +91,6 @@ public class MovingBlockScript : MonoBehaviour
         signBlockSpeed = 1;
     }
 
-    // Update is called once per frame
-   
     void Update()
     {
         if ((isMoving == false)&&(s == "box")) {
@@ -112,41 +117,37 @@ public class MovingBlockScript : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        //print(collision.gameObject.name);
-        if(collision.gameObject.tag == "Block")
+        switch(collision.gameObject.tag)
         {
-            Debug.Log("Block");
-            getSign();
-            setSign(signBlockSpeed * (-1));
-            }
-
-        if(collision.gameObject.tag == "Border")
-        {
-            Debug.Log("Border");
-            getSign();
-            setSign(signBlockSpeed * (-1));
-        }
-
-        if (collision.gameObject.tag == "MoveRectangle")
-        {
-            Debug.Log("MoveBlock");
-            getSign();
-            setSign(signBlockSpeed * (-1));
-        }
-
-        if (collision.gameObject.tag == "Ball")
-        {
-            numberOfHits++;
-        }
-         if (numberOfHits == hitsToKill)
-        {
-            //получаем ссылку на платформу
-            GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-
-            // выполняем метод из другого скрипта
-            player.SendMessage("addPoints", points);
-
-            Destroy(this.gameObject);
+            case "Block":
+                {
+                    getSign();
+                    setSign(signBlockSpeed * (-1));
+                    break;
+                }
+            case "Border":
+                {
+                    getSign();
+                    setSign(signBlockSpeed * (-1));
+                    break;
+                }
+            case "MoveRectangle":
+                {
+                    getSign();
+                    setSign(signBlockSpeed * (-1));
+                    break;
+                }
+            case "Ball":
+                {
+                    numberOfHits++;
+                    if (numberOfHits == hitsToKill)
+                    {
+                        SystemControl.addPoints(points);
+                        Block.blockDestroy(blocksDestroyed);
+                        Destroy(this.gameObject);
+                    }
+                    break;
+                }
         }
     }
 }

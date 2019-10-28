@@ -6,10 +6,9 @@ using UnityEngine.SceneManagement;
 public class MainMenu : MonoBehaviour
 {
     Scene scene;
-
+    public SystemControlScript SystemControl;
     public GameObject PanelPause;
     private bool paused = false;
-    public SystemControlScript SystemControl;
 
     void OnMouseUpAsButton()
     {

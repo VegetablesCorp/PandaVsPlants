@@ -5,7 +5,10 @@ using UnityEngine;
 
 public class BlockScript : MonoBehaviour
 {
+    public SystemControlScript SystemControl;
+    public AllBlocksScript Block;
 
+    private int blocksDestroyed;
     //число ударов по блоку, чтобы разрушить его
     public int hitsToKill;
     
@@ -15,19 +18,14 @@ public class BlockScript : MonoBehaviour
     //Число ударов, которые получил блок
     private int numberOfHits;
 
-    // Start is called before the first frame update
     void Start()
     {
+        blocksDestroyed = 1;
         numberOfHits = 0;
-        //получаем ссылку на платформу
-        GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-
-        // выполняем метод из другого скрипта
-        player.SendMessage("setMaxPoints", points);
+        SystemControl.setMaxPoints(points);
     }
 
     //Переопределение метода OnCollisionEnter2D
-    //tag задается в инспекторе для шара
     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Ball")
@@ -35,21 +33,11 @@ public class BlockScript : MonoBehaviour
             numberOfHits++;
         }
         if (numberOfHits == hitsToKill)
-            { 
-            //получаем ссылку на платформу
-            GameObject player = GameObject.FindGameObjectsWithTag("Player")[0];
-
-            // выполняем метод из другого скрипта
-            player.SendMessage("addPoints", points);
-
-            Destroy(this.gameObject);
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+            {
+                SystemControl.addPoints(points);
+                Block.blockDestroy(blocksDestroyed);
+                Destroy(this.gameObject);
+            }
     }
 }
 
