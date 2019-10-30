@@ -10,13 +10,28 @@ public class MainMenu : MonoBehaviour
     public GameObject PanelPause;
     private bool paused = false;
 
+    private float lenghtAnimation;
+    void Start()
+    {
+       
+    }
+
+    IEnumerator ButtonPlay(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        SceneManager.LoadScene(1);
+    }
     void OnMouseUpAsButton()
     {
         switch (gameObject.name)
         {
             case "play_button":
                 {
-                    SceneManager.LoadScene(1); break;
+                    Animation animation = GetComponent<Animation>();
+                    animation.Play("AnimationPlay");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(ButtonPlay(lenghtAnimation));
+                    break;
                 }
 
             case "ranking_button":

@@ -15,13 +15,6 @@ public class PlayerScript : MonoBehaviour
     {
         // получим начальную позицию платформы
         playerPosition = gameObject.transform.position;
-
-            Transform stars = Stars.GetChild(3);
-            Debug.Log(stars.toString);
-            stars.GetChild(0).setActive(false);
-            Debug.Log(stars.GetChild(0));
-            stars.GetChild(3).setActive(true);
-            Debug.Log(stars.GetChild(3));
     }
     
     // Update is called once per frame
