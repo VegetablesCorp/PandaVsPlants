@@ -859,6 +859,7 @@ GameObject:
   - component: {fileID: 1084760044}
   - component: {fileID: 1084760046}
   - component: {fileID: 1084760045}
+  - component: {fileID: 1084760047}
   m_Layer: 0
   m_Name: shop_button
   m_TagString: Untagged
@@ -1133,6 +1134,22 @@ PolygonCollider2D:
       - {x: 0.465, y: -4.865}
       - {x: 0.655, y: -4.855}
       - {x: 0.72499996, y: -4.845}
+--- !u!111 &1084760047
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1084760042}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1207019842
 GameObject:
   m_ObjectHideFlags: 0
@@ -1145,6 +1162,7 @@ GameObject:
   - component: {fileID: 1207019844}
   - component: {fileID: 1207019845}
   - component: {fileID: 1207019846}
+  - component: {fileID: 1207019847}
   m_Layer: 0
   m_Name: ranking_button
   m_TagString: Untagged
@@ -1419,6 +1437,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SystemControl: {fileID: 0}
   PanelPause: {fileID: 0}
+--- !u!111 &1207019847
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207019842}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1367133918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +1709,7 @@ GameObject:
   - component: {fileID: 1708408060}
   - component: {fileID: 1708408061}
   - component: {fileID: 1708408062}
+  - component: {fileID: 1708408063}
   m_Layer: 0
   m_Name: set_button
   m_TagString: Untagged
@@ -1949,6 +1984,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   SystemControl: {fileID: 0}
   PanelPause: {fileID: 0}
+--- !u!111 &1708408063
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1708408058}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1720368152
 GameObject:
   m_ObjectHideFlags: 0
@@ -1961,6 +2012,7 @@ GameObject:
   - component: {fileID: 1720368154}
   - component: {fileID: 1720368156}
   - component: {fileID: 1720368155}
+  - component: {fileID: 1720368157}
   m_Layer: 0
   m_Name: exit_button
   m_TagString: Untagged
@@ -2236,6 +2288,22 @@ PolygonCollider2D:
       - {x: 0.465, y: -4.865}
       - {x: 0.655, y: -4.855}
       - {x: 0.72499996, y: -4.845}
+--- !u!111 &1720368157
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720368152}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: f2a3b3160466b694abe5a12c87c25254, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &1738406469
 GameObject:
   m_ObjectHideFlags: 0

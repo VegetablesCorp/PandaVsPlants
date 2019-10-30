@@ -11,23 +11,19 @@ public class MainMenu : MonoBehaviour
     private bool paused = false;
 
     private float lenghtAnimation;
-    void Start()
-    {
-       
-    }
 
-    IEnumerator ButtonPlay(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(1);
-    }
+
+ 
+
     void OnMouseUpAsButton()
     {
+        Animation animation = GetComponent<Animation>();
+       
         switch (gameObject.name)
         {
+            
             case "play_button":
                 {
-                    Animation animation = GetComponent<Animation>();
                     animation.Play("AnimationPlay");
                     lenghtAnimation = animation.clip.length;
                     StartCoroutine(ButtonPlay(lenghtAnimation));
@@ -36,71 +32,145 @@ public class MainMenu : MonoBehaviour
 
             case "ranking_button":
                 {
-                    Debug.Log("Ranking"); break;
+                    animation.Play("ButtonAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(RankingButton(lenghtAnimation));
+                    break;
                 }
 
             case "shop_button":
                 {
-                    Debug.Log("Shop"); break;
+                    animation.Play("ButtonAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(ShopButton(lenghtAnimation));
+                    break;
                 }
 
             case "set_button":
                 {
-                    Debug.Log("Settings"); break;
+                    animation.Play("ButtonAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(SetButton(lenghtAnimation));
+                    break;
                 }
 
             case "exit_button":
                 {
-                    Debug.Log("Exit");
-                    Application.Quit();
+                    animation.Play("ButtonAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(ExitButton(lenghtAnimation));
                     break;
                 }
             case "return":
                 {
-                    SystemControl.setPause(false);
-                    Time.timeScale = 1;
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name); break;
+                    animation.Play("ButtonsWinLooseAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(ReturnButton(lenghtAnimation));
+                    break;
                 }
             case "home":
                 {
-                    SystemControl.setPause(false);
-                    Time.timeScale = 1;
-                    SceneManager.LoadScene("MainMenu"); break;
+                    animation.Play("ButtonsWinLooseAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(HomeButton(lenghtAnimation));
+                     break;
                 }
             case "pauseButton":
                 {
-                    Time.timeScale = 0;
-                    SystemControl.setPause(true);
-                    PanelPause.SetActive(true);
-                    paused = SystemControl.getPause();
-                    Debug.Log(paused);
+                    animation.Play("PauseAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(PauseButton(lenghtAnimation));
                     break;
                 }
             case "check":
                 {
-                    paused = SystemControl.getPause();
-                    if (paused == true)
-                    {
-                        Time.timeScale = 1;
-                        Debug.Log("paused = true");
-                        SystemControl.setPause(false);
-                        PanelPause.SetActive(false);
-                        
-                    }
-                    else 
-                        {
-                        scene = SceneManager.GetActiveScene();
-                        int sceneIndex = scene.buildIndex;
-                        sceneIndex++;
-                        if (sceneIndex > 5)
-                           {
-                              sceneIndex = 0;
-                           }
-                        SceneManager.LoadScene(sceneIndex);
-                       }
+                    animation.Play("ButtonsWinLooseAnimation");
+                    lenghtAnimation = animation.clip.length;
+                    StartCoroutine(CheckButton(lenghtAnimation));
                     break;
                 }
                 
+        }
+    }
+    IEnumerator ButtonPlay(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        SceneManager.LoadScene(1);
+    }
+
+    IEnumerator RankingButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        Debug.Log("Ranking");
+    }
+
+    IEnumerator ShopButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        Debug.Log("Shop");
+    }
+
+    IEnumerator SetButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        Debug.Log("Settings");
+    }
+
+    IEnumerator ExitButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        Debug.Log("Exit");
+        Application.Quit();
+    }
+
+    IEnumerator ReturnButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        SystemControl.setPause(false);
+        Time.timeScale = 1;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    IEnumerator HomeButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        SystemControl.setPause(false);
+        Time.timeScale = 1;
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    IEnumerator PauseButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        Time.timeScale = 0;
+        SystemControl.setPause(true);
+        PanelPause.SetActive(true);
+        paused = SystemControl.getPause();
+        Debug.Log(paused);
+    }
+
+    IEnumerator CheckButton(float lenghtAnimation)
+    {
+        yield return new WaitForSeconds(lenghtAnimation);
+        paused = SystemControl.getPause();
+        if (paused == true)
+        {
+            Time.timeScale = 1;
+            Debug.Log("paused = true");
+            SystemControl.setPause(false);
+            PanelPause.SetActive(false);
+
+        }
+        else
+        {
+            scene = SceneManager.GetActiveScene();
+            int sceneIndex = scene.buildIndex;
+            sceneIndex++;
+            if (sceneIndex > 5)
+            {
+                sceneIndex = 0;
+            }
+            SceneManager.LoadScene(sceneIndex);
         }
     }
 }
