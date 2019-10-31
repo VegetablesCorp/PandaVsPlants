@@ -123,8 +123,8 @@ GameObject:
   - component: {fileID: 20972202}
   - component: {fileID: 20972204}
   - component: {fileID: 20972203}
-  - component: {fileID: 20972205}
   - component: {fileID: 20972207}
+  - component: {fileID: 20972206}
   m_Layer: 0
   m_Name: Level1
   m_TagString: Untagged
@@ -186,32 +186,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20972201}
   m_CullTransparentMesh: 0
---- !u!61 &20972205
-BoxCollider2D:
+--- !u!114 &20972206
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 20972201}
   m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100}
-  m_EdgeRadius: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5be30cf241837424981a5d74bb2d6996, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &20972207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -252,7 +238,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 20972206}
         m_MethodName: OnMouseUpAsButton
         m_Mode: 1
         m_Arguments:
@@ -351,7 +337,6 @@ GameObject:
   - component: {fileID: 806307155}
   - component: {fileID: 806307157}
   - component: {fileID: 806307156}
-  - component: {fileID: 806307158}
   - component: {fileID: 806307159}
   - component: {fileID: 806307160}
   m_Layer: 0
@@ -415,32 +400,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806307154}
   m_CullTransparentMesh: 0
---- !u!61 &806307158
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806307154}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100}
-  m_EdgeRadius: 0
 --- !u!114 &806307159
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,7 +452,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 806307159}
         m_MethodName: OnMouseUpAsButton
         m_Mode: 1
         m_Arguments:
@@ -515,7 +474,6 @@ GameObject:
   - component: {fileID: 1016574067}
   - component: {fileID: 1016574069}
   - component: {fileID: 1016574068}
-  - component: {fileID: 1016574070}
   - component: {fileID: 1016574071}
   - component: {fileID: 1016574072}
   m_Layer: 0
@@ -579,32 +537,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1016574066}
   m_CullTransparentMesh: 0
---- !u!61 &1016574070
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1016574066}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100}
-  m_EdgeRadius: 0
 --- !u!114 &1016574071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -657,7 +589,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1016574071}
         m_MethodName: OnMouseUpAsButton
         m_Mode: 1
         m_Arguments:
@@ -1157,9 +1089,8 @@ GameObject:
   - component: {fileID: 1744733473}
   - component: {fileID: 1744733475}
   - component: {fileID: 1744733474}
-  - component: {fileID: 1744733476}
-  - component: {fileID: 1744733477}
   - component: {fileID: 1744733478}
+  - component: {fileID: 1744733476}
   m_Layer: 0
   m_Name: Level5
   m_TagString: Untagged
@@ -1221,33 +1152,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744733472}
   m_CullTransparentMesh: 0
---- !u!61 &1744733476
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1744733472}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100}
-  m_EdgeRadius: 0
---- !u!114 &1744733477
+--- !u!114 &1744733476
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1299,7 +1204,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1744733476}
         m_MethodName: OnMouseUpAsButton
         m_Mode: 1
         m_Arguments:
@@ -1352,7 +1257,6 @@ GameObject:
   - component: {fileID: 1798672438}
   - component: {fileID: 1798672440}
   - component: {fileID: 1798672439}
-  - component: {fileID: 1798672441}
   - component: {fileID: 1798672442}
   - component: {fileID: 1798672443}
   m_Layer: 0
@@ -1416,32 +1320,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1798672437}
   m_CullTransparentMesh: 0
---- !u!61 &1798672441
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1798672437}
-  m_Enabled: 0
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 100, y: 100}
-  m_EdgeRadius: 0
 --- !u!114 &1798672442
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1494,7 +1372,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1798672442}
         m_MethodName: OnMouseUpAsButton
         m_Mode: 1
         m_Arguments:

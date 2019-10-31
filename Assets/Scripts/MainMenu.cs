@@ -12,13 +12,10 @@ public class MainMenu : MonoBehaviour
 
     private float lenghtAnimation;
 
-
- 
-
     void OnMouseUpAsButton()
     {
         Animation animation = GetComponent<Animation>();
-       
+
         switch (gameObject.name)
         {
             
@@ -100,7 +97,7 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator RankingButton(float lenghtAnimation)
     {
-        yield return new WaitForSeconds(lenghtAnimation);
+        yield return new WaitForSeconds(0.5f);
         Debug.Log("Ranking");
     }
 
@@ -125,17 +122,17 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator ReturnButton(float lenghtAnimation)
     {
+        Time.timeScale = 1;
         yield return new WaitForSeconds(lenghtAnimation);
         SystemControl.setPause(false);
-        Time.timeScale = 1;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     IEnumerator HomeButton(float lenghtAnimation)
     {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SystemControl.setPause(false);
         Time.timeScale = 1;
+        SystemControl.setPause(false);
+        yield return new WaitForSeconds(lenghtAnimation);
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -151,7 +148,9 @@ public class MainMenu : MonoBehaviour
 
     IEnumerator CheckButton(float lenghtAnimation)
     {
+        Time.timeScale = 1;
         yield return new WaitForSeconds(lenghtAnimation);
+        Time.timeScale = 0;
         paused = SystemControl.getPause();
         if (paused == true)
         {
@@ -159,7 +158,6 @@ public class MainMenu : MonoBehaviour
             Debug.Log("paused = true");
             SystemControl.setPause(false);
             PanelPause.SetActive(false);
-
         }
         else
         {
