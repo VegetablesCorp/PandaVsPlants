@@ -164,7 +164,7 @@ public class MainMenu : MonoBehaviour
             scene = SceneManager.GetActiveScene();
             int sceneIndex = scene.buildIndex;
             sceneIndex++;
-            if (sceneIndex > 5)
+            if (sceneIndex > 6)
             {
                 sceneIndex = 0;
             }

@@ -63,7 +63,7 @@ public class BallScript : MonoBehaviour
 
     void Update()
     {
-            // проверка нажатия на пробел
+            // проверка нажатия на пробел / ЛКМ
             if (Input.GetMouseButton(0) == true)
             {
                 if (!ballIsActive)
