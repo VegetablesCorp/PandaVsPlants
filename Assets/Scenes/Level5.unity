@@ -158,7 +158,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3363df5e14e8c94469aac1bb58717b99, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -3897,7 +3897,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3478fb84c8a85e649a006637b217d797, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -6797,7 +6797,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 98bd1ddca31cd344c87f5b0f200d15a0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -7109,7 +7109,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 3363df5e14e8c94469aac1bb58717b99, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -7559,7 +7559,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 186d37256f75c7047a5ee04bc9e203d9, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -11666,7 +11666,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 98bd1ddca31cd344c87f5b0f200d15a0, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -12760,31 +12760,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SystemControl
       objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: lives.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: Lives
-      value: 
-      objectReference: {fileID: 1930128817}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: PanelLoose
-      value: 
-      objectReference: {fileID: 653884290}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: PanelWin
-      value: 
-      objectReference: {fileID: 2012114223}
     - target: {fileID: 1241272576685335856, guid: d8b0b68e7acddc34c921f5c5d19f9346,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -12840,5 +12815,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: lives.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: Lives
+      value: 
+      objectReference: {fileID: 1930128817}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: PanelLoose
+      value: 
+      objectReference: {fileID: 653884290}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 2012114223}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0b68e7acddc34c921f5c5d19f9346, type: 3}
