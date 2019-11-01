@@ -132,11 +132,12 @@ public class BallScript : MonoBehaviour
             }
 
             idc++;
-            if (idc == 30)
+        if (idc == 4)
             {
                 idc = 0;
                 if ((ballIsActive == true) && (drag_ball == 0))
                 {
+                
                     // Ограничение скорости по осям Х и Y
                     speed_X = Mathf.Abs(ballRigidBody.velocity.x);
                     speed_Y = Mathf.Abs(ballRigidBody.velocity.y);
@@ -147,6 +148,7 @@ public class BallScript : MonoBehaviour
                     }
                     if ((speed_X == 0) && (speed_Y == 0))
                     {
+                        Debug.Log("hello");
                         RandomAngle();
                     }
                     else
@@ -156,6 +158,8 @@ public class BallScript : MonoBehaviour
                     }
 
                     ballRigidBody.velocity = new Vector2(Mathf.Sign(ballRigidBody.velocity.x) * speed_X / 70f, (Mathf.Sign(ballRigidBody.velocity.y)) * speed_Y / 70f);
+
+                Debug.Log(ballRigidBody.velocity);
                 }
             }
         //}
