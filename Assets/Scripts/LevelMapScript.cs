@@ -5,80 +5,73 @@ using UnityEngine.SceneManagement;
 
 public class LevelMapScript : MonoBehaviour
 {
+    private Animator anim;
 
-    private float lenghtAnimation;
-    public void OnMouseUpAsButton()
+    private bool startAnim = false;
+    private bool endAnim = false;
+
+    private void EndAnimation()
     {
-        Animation animation = GetComponent<Animation>();
+        endAnim = true;
+    }
+
+        public void OnMouseUpAsButton()
+    {
+
+        endAnim = false;
+
+        anim = gameObject.GetComponent<Animator>();
+
+        Debug.Log(gameObject);
+
+        startAnim = true;
+        anim.SetBool("StartAnim", startAnim);
+
+        StartCoroutine(ButtonPlay());
+   }
+
+    IEnumerator ButtonPlay()
+    {
+        while (endAnim == false)
+        {
+            yield return null;
+        }
+        startAnim = false;
+        anim.SetBool("StartAnim", startAnim);
 
         switch (gameObject.name)
         {
             case "Level1":
                 {
-                    animation.Play("MapLevelAnimation");
-                    lenghtAnimation = animation.clip.length;
-                    StartCoroutine(ButtonLevel1(lenghtAnimation));
+                    SceneManager.LoadScene(2);
                     break;
                 }
+
             case "Level2":
                 {
-                    animation.Play("MapLevelAnimation");
-                    lenghtAnimation = animation.clip.length;
-                    StartCoroutine(ButtonLevel2(lenghtAnimation));
+                    SceneManager.LoadScene(3);
                     break;
                 }
+
             case "Level3":
                 {
-                    animation.Play("MapLevelAnimation");
-                    lenghtAnimation = animation.clip.length;
-                    StartCoroutine(ButtonLevel3(lenghtAnimation));
+                    SceneManager.LoadScene(4);
                     break;
                 }
+
             case "Level4":
                 {
-                    animation.Play("MapLevelAnimation");
-                    lenghtAnimation = animation.clip.length;
-                    StartCoroutine(ButtonLevel4(lenghtAnimation));
+                    SceneManager.LoadScene(5);
                     break;
                 }
+
             case "Level5":
                 {
-                    animation.Play("MapLevelAnimation");
-                    lenghtAnimation = animation.clip.length;
-                    StartCoroutine(ButtonLevel5(lenghtAnimation));
+                    SceneManager.LoadScene(6);
                     break;
                 }
         }
     }
 
-    IEnumerator ButtonLevel1(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(2);
-    }
-
-    IEnumerator ButtonLevel2(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(3);
-    }
-
-    IEnumerator ButtonLevel3(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(4);
-    }
-
-    IEnumerator ButtonLevel4(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(5);
-    }
-
-    IEnumerator ButtonLevel5(float lenghtAnimation)
-    {
-        yield return new WaitForSeconds(lenghtAnimation);
-        SceneManager.LoadScene(6);
-    }
-
 }
+
