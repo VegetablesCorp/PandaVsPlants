@@ -27,6 +27,8 @@ public class BallScript : MonoBehaviour
 
     private int idc;
 
+    private bool pause;
+
     private int playerLives;
   
     void Start()
@@ -59,12 +61,15 @@ public class BallScript : MonoBehaviour
         drag_ball = 0;
 
         playerLives = SystemControl.getLife();
+        pause = SystemControl.getPause();
     }
 
     void Update()
     {
-            // проверка нажатия на пробел / ЛКМ
-            if (Input.GetMouseButton(0) == true)
+        // проверка нажатия на пробел / ЛКМ
+        if (Input.mousePosition.y < 612)
+        {
+            if ((Input.GetMouseButton(0) == true) && (pause == false))
             {
                 if (!ballIsActive)
                 {
@@ -83,6 +88,7 @@ public class BallScript : MonoBehaviour
 
                 }
             }
+        }
 
             if (!ballIsActive && playerObject != null)
             {
@@ -159,6 +165,9 @@ public class BallScript : MonoBehaviour
                     ballRigidBody.velocity = new Vector2(Mathf.Sign(ballRigidBody.velocity.x) * speed_X / 70f, (Mathf.Sign(ballRigidBody.velocity.y)) * speed_Y / 70f);
                 }
             }
+
+        pause = SystemControl.getPause();
+        Debug.Log(Input.mousePosition.y);
         //}
     }
 
