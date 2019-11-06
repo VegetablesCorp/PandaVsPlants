@@ -167,7 +167,6 @@ public class BallScript : MonoBehaviour
             }
 
         pause = SystemControl.getPause();
-        Debug.Log(Input.mousePosition.y);
         //}
     }
 
