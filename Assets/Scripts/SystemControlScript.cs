@@ -25,9 +25,7 @@ public class SystemControlScript : MonoBehaviour
     private bool startAnim = false;
     private bool endAnim = false;
 
-    private bool endCouroutine = false;
-    private int op = 1;
-
+    public bool asd = false;
     private void EndAnimation()
     {
         endAnim = true;
@@ -103,6 +101,8 @@ public class SystemControlScript : MonoBehaviour
 
             StartCoroutine(ExplosionDelay());
 
+            StartCoroutine(PandaDelay());
+
             if (this.playerPoints > this.maxPoints*70/100)
             {
                 //Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
@@ -142,33 +142,28 @@ public class SystemControlScript : MonoBehaviour
         ExplosionAnim.SetBool("StartAnim", startAnim);
         Explosion.SetActive(false);
         Stars.transform.Find("factoryStar1").gameObject.SetActive(false);
-
-        Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-        PandaAnim.SetBool("PandaStarAnim", true);
-
-        Debug.Log("Start Panda");
-        while (endAnim == false)
-        {
-            yield return null;
-        }
-        Debug.Log("End Panda");
-        PandaAnim.SetBool("PandaStarAnim", false);
     }
 
-    /*IEnumerator PandaDelay()
+    IEnumerator PandaDelay()
     {
-            Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-            PandaAnim.SetBool("PandaStarAnim", true);
-
         Debug.Log("Start Panda");
-        while (endAnim == false)
-        {
-            yield return null;
-        }
-        Debug.Log("End Panda");
-        PandaAnim.SetBool("PandaStarAnim", false);
+        yield return StartCoroutine(ExplosionDelay());
+        Debug.Log("END");
+        //    Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
+        //    PandaAnim.SetBool("PandaStarAnim", true);
+        //     Debug.Log("Active");
+
+        //    
+        //     while (endAnim == false)
+        //    {
+        //        yield return null;
+        //    }
+
+        //     Debug.Log("End Panda");
+        //     PandaAnim.SetBool("PandaStarAnim", false);
+
     }
-    */
+    
     public void TakeLife(int playerLives)
     {
         this.playerPoints -= (30 * this.playerPoints) / 100;
@@ -212,4 +207,5 @@ public class SystemControlScript : MonoBehaviour
     {
         PlayerPrefs.SetInt("Score", this.playerPoints);
     }
+
 }
