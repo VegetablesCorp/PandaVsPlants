@@ -3096,7 +3096,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 792320289}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196c1833df4a081448655a65dee28f5e, type: 3}
   m_Name: 
@@ -3104,6 +3104,7 @@ MonoBehaviour:
   Lives: {fileID: 1930128817}
   PanelLoose: {fileID: 134030935}
   PanelWin: {fileID: 270829985}
+  asd: 0
 --- !u!95 &792320291
 Animator:
   serializedVersion: 3
@@ -6462,7 +6463,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477968384}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196c1833df4a081448655a65dee28f5e, type: 3}
   m_Name: 
@@ -6470,6 +6471,7 @@ MonoBehaviour:
   Lives: {fileID: 1930128817}
   PanelLoose: {fileID: 134030935}
   PanelWin: {fileID: 270829985}
+  asd: 0
 --- !u!1 &1480190887
 GameObject:
   m_ObjectHideFlags: 0
@@ -10220,31 +10222,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SystemControl
       objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: lives.Array.size
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: Lives
-      value: 
-      objectReference: {fileID: 1930128817}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: PanelLoose
-      value: 
-      objectReference: {fileID: 134030935}
-    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
-        type: 3}
-      propertyPath: PanelWin
-      value: 
-      objectReference: {fileID: 270829985}
     - target: {fileID: 1241272576685335856, guid: d8b0b68e7acddc34c921f5c5d19f9346,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10300,5 +10277,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: lives.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: Lives
+      value: 
+      objectReference: {fileID: 1930128817}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: PanelLoose
+      value: 
+      objectReference: {fileID: 134030935}
+    - target: {fileID: 1241272576685335871, guid: d8b0b68e7acddc34c921f5c5d19f9346,
+        type: 3}
+      propertyPath: PanelWin
+      value: 
+      objectReference: {fileID: 270829985}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d8b0b68e7acddc34c921f5c5d19f9346, type: 3}

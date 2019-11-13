@@ -24,11 +24,15 @@ public class SystemControlScript : MonoBehaviour
 
     private bool startAnim = false;
     private bool endAnim = false;
+    private bool end;
 
     public bool asd = false;
+
     private void EndAnimation()
-    {
+    {        
         endAnim = true;
+       // Debug.Log(endAnim);
+       // Debug.Log("from method");
     }
 
     void Start()
@@ -37,6 +41,10 @@ public class SystemControlScript : MonoBehaviour
 
         playerPoints = 0;
         playerLives = 3;
+        Debug.Log("*************************************************************");
+        Debug.Log("*************************************************************");
+        Debug.Log("*************************************************************");
+        Debug.Log("*************************************************************");
 
         loose = false;
         win = false;
@@ -56,6 +64,11 @@ public class SystemControlScript : MonoBehaviour
         PandaAnim = PandaStar.GetComponent<Animator>();
 
         setWin(true);
+    }
+
+    void Update()
+    {
+        
     }
 
     public bool getPause()
@@ -101,7 +114,7 @@ public class SystemControlScript : MonoBehaviour
 
             StartCoroutine(ExplosionDelay());
 
-            StartCoroutine(PandaDelay());
+           // StartCoroutine(PandaDelay());
 
             if (this.playerPoints > this.maxPoints*70/100)
             {
@@ -131,14 +144,30 @@ public class SystemControlScript : MonoBehaviour
     IEnumerator ExplosionDelay()
     {
         Debug.Log("Start Explosion");
-        while (endAnim == false)
+        //while (endAnim == false)
+        //{
+        //    if (!end)
+        //    {
+        //        Debug.Log(endAnim);
+        //        yield return null;
+        //    }
+        //    else
+        //    {
+        //        StopCoroutine(ExplosionDelay());
+
+        //    }
+        //}
+
+       // while (endAnim == false)
         {
             yield return null;
         }
-
         Debug.Log("End Explosion");
+        end = true;
+        Debug.Log(end);
         startAnim = false;
         endAnim = false;
+        Debug.Log(endAnim);
         ExplosionAnim.SetBool("StartAnim", startAnim);
         Explosion.SetActive(false);
         Stars.transform.Find("factoryStar1").gameObject.SetActive(false);
@@ -149,18 +178,18 @@ public class SystemControlScript : MonoBehaviour
         Debug.Log("Start Panda");
         yield return StartCoroutine(ExplosionDelay());
         Debug.Log("END");
-        //    Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-        //    PandaAnim.SetBool("PandaStarAnim", true);
-        //     Debug.Log("Active");
+        Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
+        PandaAnim.SetBool("PandaStarAnim", true);
+        Debug.Log("Active");
 
-        //    
-        //     while (endAnim == false)
-        //    {
-        //        yield return null;
-        //    }
 
-        //     Debug.Log("End Panda");
-        //     PandaAnim.SetBool("PandaStarAnim", false);
+        //while (endAnim == false)
+        {
+            yield return null;
+        }
+
+        Debug.Log("End Panda");
+        PandaAnim.SetBool("PandaStarAnim", false);
 
     }
     

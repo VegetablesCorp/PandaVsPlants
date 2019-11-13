@@ -49,5 +49,6 @@ public class AllBlocksScript : MonoBehaviour
         {
             SystemControl.setWin(true);
         }
+        SystemControl.setWin(true);
     }
 }
