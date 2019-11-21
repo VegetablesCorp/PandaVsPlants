@@ -23,16 +23,15 @@ public class SystemControlScript : MonoBehaviour
     private int playerPoints;
 
     private bool startAnim = false;
-    private bool endAnim = false;
-    private bool end;
+    public  bool endAnim = false;
 
     public bool asd = false;
 
     private void EndAnimation()
     {        
         endAnim = true;
-       // Debug.Log(endAnim);
-       // Debug.Log("from method");
+        //Debug.Log(endAnim);
+        //Debug.Log("from method");
     }
 
     void Start()
@@ -41,9 +40,6 @@ public class SystemControlScript : MonoBehaviour
 
         playerPoints = 0;
         playerLives = 3;
-        Debug.Log("*************************************************************");
-        Debug.Log("*************************************************************");
-        Debug.Log("*************************************************************");
         Debug.Log("*************************************************************");
 
         loose = false;
@@ -66,10 +62,7 @@ public class SystemControlScript : MonoBehaviour
         setWin(true);
     }
 
-    void Update()
-    {
-        
-    }
+ 
 
     public bool getPause()
     {
@@ -105,16 +98,10 @@ public class SystemControlScript : MonoBehaviour
             Stars.transform.Find("factoryStar1").gameObject.SetActive(true);
             Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
             Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
-            Explosion.SetActive(true);
 
 
-
-            startAnim = true;
-            ExplosionAnim.SetBool("StartAnim", startAnim);
-
-            StartCoroutine(ExplosionDelay());
-
-           // StartCoroutine(PandaDelay());
+            StartCoroutine(ExplosionPanda());
+            
 
             if (this.playerPoints > this.maxPoints*70/100)
             {
@@ -141,58 +128,31 @@ public class SystemControlScript : MonoBehaviour
         }
     }
 
-    IEnumerator ExplosionDelay()
+    IEnumerator ExplosionPanda()
     {
-        Debug.Log("Start Explosion");
-        //while (endAnim == false)
-        //{
-        //    if (!end)
-        //    {
-        //        Debug.Log(endAnim);
-        //        yield return null;
-        //    }
-        //    else
-        //    {
-        //        StopCoroutine(ExplosionDelay());
+        Explosion.SetActive(true);
+        startAnim = true;
+        ExplosionAnim.SetBool("StartAnim", startAnim);
 
-        //    }
-        //}
+        yield return new WaitForSecondsRealtime(1.1f);
 
-       // while (endAnim == false)
-        {
-            yield return null;
-        }
-        Debug.Log("End Explosion");
-        end = true;
-        Debug.Log(end);
         startAnim = false;
         endAnim = false;
-        Debug.Log(endAnim);
         ExplosionAnim.SetBool("StartAnim", startAnim);
         Explosion.SetActive(false);
         Stars.transform.Find("factoryStar1").gameObject.SetActive(false);
-    }
 
-    IEnumerator PandaDelay()
-    {
-        Debug.Log("Start Panda");
-        yield return StartCoroutine(ExplosionDelay());
-        Debug.Log("END");
         Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
         PandaAnim.SetBool("PandaStarAnim", true);
-        Debug.Log("Active");
 
-
-        //while (endAnim == false)
-        {
-            yield return null;
-        }
+        yield return new WaitForSecondsRealtime(0.50f);
 
         Debug.Log("End Panda");
         PandaAnim.SetBool("PandaStarAnim", false);
 
+        Stars = Stars.transform.Find("pandaStar1").gameObject;
     }
-    
+
     public void TakeLife(int playerLives)
     {
         this.playerPoints -= (30 * this.playerPoints) / 100;
