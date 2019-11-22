@@ -32,7 +32,6 @@ public class SystemControlScript : MonoBehaviour
     private int maxPoints;
     private int playerPoints;
 
-
     public int stars = 0;
 
     void Start()
@@ -68,11 +67,7 @@ public class SystemControlScript : MonoBehaviour
         PandaAnim_1 = PandaStar_1.GetComponent<Animator>();
         PandaAnim_2 = PandaStar_2.GetComponent<Animator>();
         PandaAnim_3 = PandaStar_3.GetComponent<Animator>();
-
-        setWin(true);
     }
-
- 
 
     public bool getPause()
     {
@@ -123,8 +118,8 @@ public class SystemControlScript : MonoBehaviour
                 Debug.Log("1");
                 stars = 1;
                 //Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-                Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
-                Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
+               // Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
+               // Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
                 //Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 1 star");
             }
             else
@@ -143,8 +138,6 @@ public class SystemControlScript : MonoBehaviour
 
     IEnumerator ExplosionPanda(int stars)
     {
-        if (stars == 1)
-        {
             Explosion_1.SetActive(true);
             ExplosionAnim_1.SetBool("StartAnim", true);
 
@@ -161,6 +154,8 @@ public class SystemControlScript : MonoBehaviour
 
             PandaAnim_1.SetBool("PandaStarAnim", false);
 
+        if (stars > 1)
+        {
             Explosion_2.SetActive(true);
             ExplosionAnim_2.SetBool("StartAnim", true);
 
@@ -176,7 +171,10 @@ public class SystemControlScript : MonoBehaviour
             yield return new WaitForSecondsRealtime(0.50f);
 
             PandaAnim_2.SetBool("PandaStarAnim", false);
+        }
 
+        if (stars == 3)
+        {
             Explosion_3.SetActive(true);
             ExplosionAnim_3.SetBool("StartAnim", true);
 

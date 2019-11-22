@@ -34,9 +34,9 @@ public class BlockScript : MonoBehaviour
         }
         if (numberOfHits == hitsToKill)
             {
-                SystemControl.addPoints(points);
-                Block.blockDestroy(blocksDestroyed);
-                Destroy(this.gameObject);
+               SystemControl.addPoints(points);
+               Block.blockDestroy(blocksDestroyed);
+               Destroy(this.gameObject);
             }
     }
 }
