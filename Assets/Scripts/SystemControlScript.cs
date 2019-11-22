@@ -67,6 +67,8 @@ public class SystemControlScript : MonoBehaviour
         PandaAnim_1 = PandaStar_1.GetComponent<Animator>();
         PandaAnim_2 = PandaStar_2.GetComponent<Animator>();
         PandaAnim_3 = PandaStar_3.GetComponent<Animator>();
+
+        //setWin(true);
     }
 
     public bool getPause()

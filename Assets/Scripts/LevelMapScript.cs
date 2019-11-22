@@ -6,16 +6,53 @@ using UnityEngine.SceneManagement;
 public class LevelMapScript : MonoBehaviour
 {
     private Animator anim;
-
+    private int LevelComplete;
     private bool startAnim = false;
     private bool endAnim = false;
+
+    private SpriteRenderer SpriteRend;
+    public GameObject Levels;
+
+    
+
+    //private GameObject Canvas;
+
 
     private void EndAnimation()
     {
         endAnim = true;
     }
 
-        public void OnMouseUpAsButton()
+    private void Awake()
+    {
+        
+/*
+        if (PlayerPrefs.HasKey("Level")) { Debug.Log("Level № "); }
+        else {
+            LevelComplete = 1;
+            Debug.Log("Level 1");
+            PlayerPrefs.SetFloat("Level", LevelComplete); // т.к. автоматической работы 
+        }
+
+        Levels.SetActive(true);
+        for (int i = 0; i < Levels.transform.childCount; i++)
+            {
+            SpriteRend = Levels.transform.GetChild(i).gameObject.GetComponent<SpriteRenderer>(); // Выключаем или включаем каждого полученного ребёнка по порядку.
+            var colorObject = SpriteRend.color;
+            colorObject.a = 100.0f;
+            }
+
+*/
+            switch (LevelComplete)
+        {
+            case 1:
+                {
+
+                    break;
+                }
+        }
+    }
+    public void OnMouseUpAsButton()
     {
 
         endAnim = false;
