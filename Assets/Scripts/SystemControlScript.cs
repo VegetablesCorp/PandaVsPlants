@@ -9,11 +9,21 @@ public class SystemControlScript : MonoBehaviour
     public GameObject PanelWin;
 
     private GameObject Stars;
-    private GameObject Explosion;
-    private Animator ExplosionAnim;
+    private GameObject Explosion_1;
+    private GameObject Explosion_2;
+    private GameObject Explosion_3;
 
-    private GameObject PandaStar;
-    private Animator PandaAnim;
+    private Animator ExplosionAnim_1;
+    private Animator ExplosionAnim_2;
+    private Animator ExplosionAnim_3;
+
+    private GameObject PandaStar_1;
+    private GameObject PandaStar_2;
+    private GameObject PandaStar_3;
+
+    private Animator PandaAnim_1;
+    private Animator PandaAnim_2;
+    private Animator PandaAnim_3;
 
     private bool paused;
     private bool loose;
@@ -22,17 +32,8 @@ public class SystemControlScript : MonoBehaviour
     private int maxPoints;
     private int playerPoints;
 
-    private bool startAnim = false;
-    public  bool endAnim = false;
 
-    public bool asd = false;
-
-    private void EndAnimation()
-    {        
-        endAnim = true;
-        //Debug.Log(endAnim);
-        //Debug.Log("from method");
-    }
+    public int stars = 0;
 
     void Start()
     {
@@ -52,12 +53,21 @@ public class SystemControlScript : MonoBehaviour
             Stars.transform.GetChild(i).gameObject.SetActive(false); // Выключаем или включаем каждого полученного ребёнка по порядку.
         }
 
-        Explosion = Stars.transform.Find("Explosion").gameObject;
+        Explosion_1 = Stars.transform.Find("Explosion1").gameObject;
+        Explosion_2 = Stars.transform.Find("Explosion2").gameObject;
+        Explosion_3 = Stars.transform.Find("Explosion3").gameObject;
 
-        ExplosionAnim = Explosion.GetComponent<Animator>();
+        ExplosionAnim_1 = Explosion_1.GetComponent<Animator>();
+        ExplosionAnim_2 = Explosion_2.GetComponent<Animator>();
+        ExplosionAnim_3 = Explosion_3.GetComponent<Animator>();
 
-        PandaStar = Stars.transform.Find("pandaStar1").gameObject;
-        PandaAnim = PandaStar.GetComponent<Animator>();
+        PandaStar_1 = Stars.transform.Find("pandaStar1").gameObject;
+        PandaStar_2 = Stars.transform.Find("pandaStar2").gameObject;
+        PandaStar_3 = Stars.transform.Find("pandaStar3").gameObject;
+
+        PandaAnim_1 = PandaStar_1.GetComponent<Animator>();
+        PandaAnim_2 = PandaStar_2.GetComponent<Animator>();
+        PandaAnim_3 = PandaStar_3.GetComponent<Animator>();
 
         setWin(true);
     }
@@ -99,19 +109,19 @@ public class SystemControlScript : MonoBehaviour
             Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
             Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
 
-
-            StartCoroutine(ExplosionPanda());
-            
-
             if (this.playerPoints > this.maxPoints*70/100)
             {
+                Debug.Log("3");
+                stars = 3;
                 //Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-                Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
-                Stars.transform.Find("pandaStar3").gameObject.SetActive(true);
+                //Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
+               // Stars.transform.Find("pandaStar3").gameObject.SetActive(true);
                 //Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 3 stars");
             }
             else if(this.playerPoints <= this.maxPoints * 50 / 100)
             {
+                Debug.Log("1");
+                stars = 1;
                 //Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
                 Stars.transform.Find("factoryStar2").gameObject.SetActive(true);
                 Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
@@ -119,38 +129,70 @@ public class SystemControlScript : MonoBehaviour
             }
             else
             {
+                stars = 2;
+                Debug.Log("2");
                 //Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-                Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
-                Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
-               // Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 2 stars");
+                //   Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
+                //   Stars.transform.Find("factoryStar3").gameObject.SetActive(true);
+                // Debug.Log("Max Points = " + this.maxPoints + " Player Points = " + this.playerPoints + " - 2 stars");
             }
+            StartCoroutine(ExplosionPanda(stars));
             Time.timeScale = 0;
         }
     }
 
-    IEnumerator ExplosionPanda()
+    IEnumerator ExplosionPanda(int stars)
     {
-        Explosion.SetActive(true);
-        startAnim = true;
-        ExplosionAnim.SetBool("StartAnim", startAnim);
+        if (stars == 1)
+        {
+            Explosion_1.SetActive(true);
+            ExplosionAnim_1.SetBool("StartAnim", true);
 
-        yield return new WaitForSecondsRealtime(1.1f);
+            yield return new WaitForSecondsRealtime(1.1f);
 
-        startAnim = false;
-        endAnim = false;
-        ExplosionAnim.SetBool("StartAnim", startAnim);
-        Explosion.SetActive(false);
-        Stars.transform.Find("factoryStar1").gameObject.SetActive(false);
+            ExplosionAnim_1.SetBool("StartAnim", false);
+            Explosion_1.SetActive(false);
+            Stars.transform.Find("factoryStar1").gameObject.SetActive(false);
+            Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
 
-        Stars.transform.Find("pandaStar1").gameObject.SetActive(true);
-        PandaAnim.SetBool("PandaStarAnim", true);
+            PandaAnim_1.SetBool("PandaStarAnim", true);
 
-        yield return new WaitForSecondsRealtime(0.50f);
+            yield return new WaitForSecondsRealtime(0.50f);
 
-        Debug.Log("End Panda");
-        PandaAnim.SetBool("PandaStarAnim", false);
+            PandaAnim_1.SetBool("PandaStarAnim", false);
 
-        Stars = Stars.transform.Find("pandaStar1").gameObject;
+            Explosion_2.SetActive(true);
+            ExplosionAnim_2.SetBool("StartAnim", true);
+
+            yield return new WaitForSecondsRealtime(1.1f);
+
+            ExplosionAnim_2.SetBool("StartAnim", false);
+            Explosion_2.SetActive(false);
+            Stars.transform.Find("factoryStar2").gameObject.SetActive(false);
+            Stars.transform.Find("pandaStar2").gameObject.SetActive(true);
+
+            PandaAnim_2.SetBool("PandaStarAnim", true);
+
+            yield return new WaitForSecondsRealtime(0.50f);
+
+            PandaAnim_2.SetBool("PandaStarAnim", false);
+
+            Explosion_3.SetActive(true);
+            ExplosionAnim_3.SetBool("StartAnim", true);
+
+            yield return new WaitForSecondsRealtime(1.1f);
+
+            ExplosionAnim_3.SetBool("StartAnim", false);
+            Explosion_3.SetActive(false);
+            Stars.transform.Find("factoryStar3").gameObject.SetActive(false);
+            Stars.transform.Find("pandaStar3").gameObject.SetActive(true);
+
+            PandaAnim_3.SetBool("PandaStarAnim", true);
+
+            yield return new WaitForSecondsRealtime(0.50f);
+
+            PandaAnim_3.SetBool("PandaStarAnim", false);
+        }
     }
 
     public void TakeLife(int playerLives)
